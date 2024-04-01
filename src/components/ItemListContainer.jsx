@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 
 import data from '../data/products.json'
+import ItemList from './ItemList'
 
 function ItemListContainer () {
   const [products, setProducts] = useState([])
@@ -17,10 +18,7 @@ function ItemListContainer () {
 
   return (
     <>
-      {products.map(product =>
-        <h1 className='text-center mt-5' key={product.id}>
-          {product.title}
-        </h1>)}
+      <ItemList products={products} />
     </>
   )
 }
