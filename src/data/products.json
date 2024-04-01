@@ -5,7 +5,7 @@
     "description": 1,
     "price": 1,
     "pictureUrl": 1,
-    "category": 1
+    "category": "notebooks"
   },
   {
     "id": 2,
@@ -13,7 +13,7 @@
     "description": 2,
     "price": 2,
     "pictureUrl": 2,
-    "category": 1
+    "category": "telefonos"
   },
   {
     "id": 3,
@@ -21,7 +21,7 @@
     "description": 3,
     "price": 3,
     "pictureUrl": 3,
-    "category": 2
+    "category": "notebooks"
   },
   {
     "id": 4,
@@ -29,6 +29,6 @@
     "description": 4,
     "price": 4,
     "pictureUrl": 4,
-    "category": 2
+    "category": "telefonos"
   }
 ]

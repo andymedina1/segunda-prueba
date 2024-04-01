@@ -21,7 +21,7 @@ function ItemListContainer () {
         setProducts(data)
       } else {
         // Si la ruta tiene un id, filtro los productos por categoría
-        const productosFiltrados = data.filter((prod) => prod.category === Number(id))
+        const productosFiltrados = data.filter((prod) => prod.category === id)
         setProducts(productosFiltrados)
       }
     })
