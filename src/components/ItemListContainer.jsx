@@ -7,7 +7,7 @@ import ItemList from './ItemList'
 function ItemListContainer () {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
-  const { id } = useParams()
+  const { category } = useParams()
 
   // Efecto secundario para obtener los datos
   useEffect(() => {
@@ -18,18 +18,18 @@ function ItemListContainer () {
     })
 
     promesa.then((data) => {
-      if (!id) {
-        // Si no hay un id en la ruta, muestro todos los productos
+      if (!category) {
+        // Si no hay un category en la ruta, muestro todos los productos
         setProducts(data)
         setLoading(false)
       } else {
-        // Si la ruta tiene un id, filtro los productos por categoría
-        const productosFiltrados = data.filter((prod) => prod.category === id)
+        // Si la ruta tiene un category, filtro los productos por categoría
+        const productosFiltrados = data.filter((prod) => prod.category === category)
         setProducts(productosFiltrados)
         setLoading(false)
       }
     })
-  }, [id])
+  }, [category])
 
   return (
     <>
