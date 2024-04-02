@@ -12,8 +12,12 @@ function NavBar () {
           </NavLink>
 
           <div className='navbar_link-container'>
-            <NavLink to='/category/notebooks'><h5>Notebooks</h5></NavLink>
-            <NavLink to='/category/telefonos'><h5>Teléfonos</h5></NavLink>
+            <NavLink to='/category/notebooks'>
+              <h5>Notebooks</h5>
+            </NavLink>
+            <NavLink to='/category/telefonos'>
+              <h5>Teléfonos</h5>
+            </NavLink>
           </div>
 
           <CartWidget />

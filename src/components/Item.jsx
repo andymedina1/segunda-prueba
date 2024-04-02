@@ -11,9 +11,7 @@ function Item ({ id, title, description, price, pictureUrl }) {
         <div>
           <Card.Body>
             <Card.Title>{title}</Card.Title>
-            <Card.Text>
-              {description}
-            </Card.Text>
+            <Card.Text>{description}</Card.Text>
             <Card.Title className='text-center'>{price}</Card.Title>
           </Card.Body>
         </div>
