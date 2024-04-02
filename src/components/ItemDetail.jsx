@@ -1,6 +1,24 @@
 import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
+import { useState } from 'react'
 
 function ItemDetail ({ title, description, price, pictureUrl }) {
+  const [cantidad, setCantidad] = useState(0)
+
+  const handleIncrement = () => {
+    setCantidad((prevCantidad) => prevCantidad + 1)
+  }
+
+  const handleDecrement = () => {
+    if (cantidad > 0) {
+      setCantidad((prevCantidad) => prevCantidad - 1)
+    }
+  }
+
+  const handleReset = () => {
+    setCantidad(0)
+  }
+
   return (
     <div
       className='d-flex justify-content-center'
@@ -23,6 +41,35 @@ function ItemDetail ({ title, description, price, pictureUrl }) {
               <Card.Title>{title}</Card.Title>
               <Card.Text>{description}</Card.Text>
               <Card.Title>{price}</Card.Title>
+              <div className='d-flex justify-content-around align-items-center'>
+                <div
+                  className='d-flex flex-column align-items-center gap-2'
+                  style={{ width: '25%' }}
+                >
+                  <Button
+                    variant='secondary'
+                    onClick={handleIncrement}
+                    style={{ width: 50 }}
+                  >
+                    +
+                  </Button>
+                  <Button
+                    variant='secondary'
+                    onClick={handleDecrement}
+                    style={{ width: 50 }}
+                  >
+                    -
+                  </Button>
+                </div>
+                <h4>{cantidad}</h4>
+                <Button
+                  variant='secondary'
+                  onClick={handleReset}
+                  style={{ height: '70px', width: 100 }}
+                >
+                  Agregar al carrito
+                </Button>
+              </div>
             </Card.Body>
           </div>
         </div>
