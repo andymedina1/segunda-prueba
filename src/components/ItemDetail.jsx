@@ -3,20 +3,20 @@ import Button from 'react-bootstrap/Button'
 import { useState } from 'react'
 
 function ItemDetail ({ title, description, price, pictureUrl }) {
-  const [cantidad, setCantidad] = useState(0)
+  const [cantidad, setCantidad] = useState(1)
 
   const handleIncrement = () => {
     setCantidad((prevCantidad) => prevCantidad + 1)
   }
 
   const handleDecrement = () => {
-    if (cantidad > 0) {
+    if (cantidad > 1) {
       setCantidad((prevCantidad) => prevCantidad - 1)
     }
   }
 
   const handleReset = () => {
-    setCantidad(0)
+    setCantidad(1)
   }
 
   return (
