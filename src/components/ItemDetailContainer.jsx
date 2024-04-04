@@ -9,10 +9,8 @@ function ItemDetailContainer () {
 
   const { id } = useParams()
 
-  // Efecto secundario para obtener los datos
   useEffect(() => {
     const promesa = new Promise((resolve) => {
-      // Simular retraso de red
       setTimeout(() => resolve(data), 2000)
     })
 
