@@ -1,7 +1,25 @@
+import { useState } from 'react'
+
 import Card from 'react-bootstrap/Card'
 import ItemCount from './ItemCount'
 
 function ItemDetail ({ title, description, price, pictureUrl }) {
+  const [cantidad, setCantidad] = useState(1)
+
+  const handleIncrement = () => {
+    setCantidad((prevCantidad) => prevCantidad + 1)
+  }
+
+  const handleDecrement = () => {
+    if (cantidad > 1) {
+      setCantidad((prevCantidad) => prevCantidad - 1)
+    }
+  }
+
+  const handleReset = () => {
+    setCantidad(1)
+  }
+
   return (
     <div
       className='d-flex justify-content-center'
@@ -24,7 +42,12 @@ function ItemDetail ({ title, description, price, pictureUrl }) {
               <Card.Title>{title}</Card.Title>
               <Card.Text>{description}</Card.Text>
               <Card.Title>{price}</Card.Title>
-              <ItemCount />
+              <ItemCount
+                cantidad={cantidad}
+                handleIncrement={handleIncrement}
+                handleDecrement={handleDecrement}
+                handleReset={handleReset}
+              />
             </Card.Body>
           </div>
         </div>

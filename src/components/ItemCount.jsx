@@ -1,23 +1,11 @@
-import { useState } from 'react'
 import Button from 'react-bootstrap/Button'
 
-function ItemCount () {
-  const [cantidad, setCantidad] = useState(1)
-
-  const handleIncrement = () => {
-    setCantidad((prevCantidad) => prevCantidad + 1)
-  }
-
-  const handleDecrement = () => {
-    if (cantidad > 1) {
-      setCantidad((prevCantidad) => prevCantidad - 1)
-    }
-  }
-
-  const handleReset = () => {
-    setCantidad(1)
-  }
-
+function ItemCount ({
+  cantidad,
+  handleIncrement,
+  handleDecrement,
+  handleReset
+}) {
   return (
     <div className='d-flex justify-content-around align-items-center'>
       <div
