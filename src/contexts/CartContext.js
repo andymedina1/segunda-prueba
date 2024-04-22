@@ -1,18 +1,25 @@
 import { createContext, useState } from 'react'
 
-const CartContext = createContext({ cartList: [] })
+const CartContext = createContext({
+  cartList: [],
+  addToCart: () => {},
+  clear: () => {},
+  deleteItem: () => {}
+})
 
 function CartContextProvider ({ children }) {
   const [cartList, setCartList] = useState([])
 
   const addToCart = (item, quantity) => {
-    setCartList(prevCartList => [...prevCartList, { ...item, quantity }])
+    setCartList((prevCartList) => [...prevCartList, { ...item, quantity }])
   }
 
   const clear = () => setCartList([])
 
   const deleteItem = (id) => {
-    setCartList(prevCartList => prevCartList.filter(item => item.id !== id))
+    setCartList((prevCartList) =>
+      prevCartList.filter((item) => item.id !== id)
+    )
   }
 
   return (

@@ -62,7 +62,6 @@ function ItemDetail ({ item }) {
               </div>
             </Card.Body>
           </div>
-
         </div>
       </Card>
     </div>
