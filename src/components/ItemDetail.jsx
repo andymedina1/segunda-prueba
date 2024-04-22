@@ -1,14 +1,21 @@
 import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import ItemCount from './ItemCount'
 
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-import ItemCount from './ItemCount'
 
 function ItemDetail ({ item }) {
   const [cartValue, setCartValue] = useState(null)
 
+  const navigate = useNavigate()
+
   const onAdd = (quantityToAdd) => {
     setCartValue(quantityToAdd)
+  }
+
+  const handleGoBack = () => {
+    navigate(-1)
   }
 
   return (
@@ -33,20 +40,25 @@ function ItemDetail ({ item }) {
               <Card.Title>{item.title}</Card.Title>
               <Card.Text>{item.description}</Card.Text>
               <Card.Title>{item.price}</Card.Title>
+
               {!cartValue ? <ItemCount onAdd={onAdd} /> : <Success />}
+
               <div className='mt-5 d-flex gap-5'>
                 <Button
                   variant='secondary'
                   style={{ height: '70px', width: 100 }}
+                  onClick={handleGoBack}
                 >
                   Volver
                 </Button>
-                <Button
-                  variant='secondary'
-                  style={{ height: '70px', width: 150 }}
-                >
-                  Terminar mi compra
-                </Button>
+                <Link to='/cart'>
+                  <Button
+                    variant='secondary'
+                    style={{ height: '70px', width: 150 }}
+                  >
+                    Terminar mi compra
+                  </Button>
+                </Link>
               </div>
             </Card.Body>
           </div>
