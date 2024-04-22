@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Card from 'react-bootstrap/Card'
 import ItemCount from './ItemCount'
 
-function ItemDetail ({ title, description, price, pictureUrl }) {
+function ItemDetail ({ item }) {
   const [cantidad, setCantidad] = useState(1)
 
   const handleIncrement = () => {
@@ -30,8 +30,8 @@ function ItemDetail ({ title, description, price, pictureUrl }) {
           <div>
             <Card.Img
               variant='top'
-              src={pictureUrl}
-              alt={'Imágen de ' + title}
+              src={item.pictureUrl}
+              alt={'Imágen de ' + item.title}
             />
           </div>
           <div style={{ paddingLeft: '20px', borderLeft: '1px solid #757575' }}>
@@ -39,9 +39,9 @@ function ItemDetail ({ title, description, price, pictureUrl }) {
               style={{ height: '80%' }}
               className='d-flex flex-column justify-content-around text-center'
             >
-              <Card.Title>{title}</Card.Title>
-              <Card.Text>{description}</Card.Text>
-              <Card.Title>{price}</Card.Title>
+              <Card.Title>{item.title}</Card.Title>
+              <Card.Text>{item.description}</Card.Text>
+              <Card.Title>{item.price}</Card.Title>
               <ItemCount
                 cantidad={cantidad}
                 handleIncrement={handleIncrement}

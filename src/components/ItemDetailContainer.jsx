@@ -5,7 +5,7 @@ import data from '../data/products.json'
 import ItemDetail from './ItemDetail'
 
 function ItemDetailContainer () {
-  const [product, setProduct] = useState(null)
+  const [item, setItem] = useState(null)
 
   const { id } = useParams()
 
@@ -15,15 +15,15 @@ function ItemDetailContainer () {
     })
 
     promesa.then((data) => {
-      setProduct(data.find((product) => product.id === Number(id)))
+      setItem(data.find((item) => item.id === Number(id)))
     })
   }, [id])
 
   return (
     <>
-      {product === null
+      {item === null
         ? <h1 className='text-center m-5'>Loading...</h1>
-        : <ItemDetail {...product} />}
+        : <ItemDetail item={item} />}
     </>
   )
 }
