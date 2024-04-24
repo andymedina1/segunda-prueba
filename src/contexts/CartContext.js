@@ -2,28 +2,35 @@ import { createContext, useState } from 'react'
 
 const CartContext = createContext({
   cartList: [],
-  addToCart: () => {},
+  addItem: () => {},
   clear: () => {},
-  deleteItem: () => {}
+  removeItem: () => {},
+  isInCart: () => {}
 })
 
 function CartContextProvider ({ children }) {
   const [cartList, setCartList] = useState([])
 
-  const addToCart = (item, quantity) => {
+  const addItem = (item, quantity) => {
     setCartList((prevCartList) => [...prevCartList, { ...item, quantity }])
   }
 
   const clear = () => setCartList([])
 
-  const deleteItem = (id) => {
+  const removeItem = (id) => {
     setCartList((prevCartList) =>
       prevCartList.filter((item) => item.id !== id)
     )
   }
 
+  const isInCart = (id) => {
+    return cartList.some((item) => item.id === id)
+  }
+
   return (
-    <CartContext.Provider value={{ cartList, addToCart, clear, deleteItem }}>
+    <CartContext.Provider
+      value={{ cartList, addItem, clear, removeItem, isInCart }}
+    >
       {children}
     </CartContext.Provider>
   )
