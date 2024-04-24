@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react'
 
-const CartContext = createContext({
+export const CartContext = createContext({
   cartList: [],
   addItem: () => {},
   clear: () => {},

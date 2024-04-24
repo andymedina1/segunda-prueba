@@ -1,6 +1,8 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+
 import ItemCount from './ItemCount'
+import { CartContext } from '../contexts/CartContext'
 
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
@@ -8,10 +10,13 @@ import Button from 'react-bootstrap/Button'
 function ItemDetail ({ item }) {
   const [cartValue, setCartValue] = useState(null)
 
+  const { addItem } = useContext(CartContext)
+
   const navigate = useNavigate()
 
   const onAdd = (quantityToAdd) => {
     setCartValue(quantityToAdd)
+    addItem(item, quantityToAdd)
   }
 
   const handleGoBack = () => {
