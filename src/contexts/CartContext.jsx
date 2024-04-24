@@ -12,7 +12,18 @@ function CartContextProvider ({ children }) {
   const [cartList, setCartList] = useState([])
 
   const addItem = (item, quantity) => {
-    setCartList((prevCartList) => [...prevCartList, { ...item, quantity }])
+    setCartList((prevCartList) => {
+      if (!prevCartList.some((cartItem) => cartItem.id === item.id)) {
+        return [...prevCartList, { ...item, quantity }]
+      } else {
+        const newCartList = prevCartList.map((cartItem) =>
+          cartItem.id === item.id
+            ? { ...cartItem, quantity: cartItem.quantity + quantity }
+            : cartItem
+        )
+        return newCartList
+      }
+    })
   }
 
   const clear = () => setCartList([])
