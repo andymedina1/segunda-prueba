@@ -4,8 +4,7 @@ export const CartContext = createContext({
   cartList: [],
   addItem: () => {},
   clear: () => {},
-  removeItem: () => {},
-  isInCart: () => {}
+  removeItem: () => {}
 })
 
 function CartContextProvider ({ children }) {
@@ -13,7 +12,9 @@ function CartContextProvider ({ children }) {
 
   const addItem = (item, quantity) => {
     setCartList((prevCartList) => {
-      if (!prevCartList.some((cartItem) => cartItem.id === item.id)) {
+      const isInCart = prevCartList.some((cartItem) => cartItem.id === item.id)
+
+      if (!isInCart) {
         return [...prevCartList, { ...item, quantity }]
       } else {
         const newCartList = prevCartList.map((cartItem) =>
@@ -34,14 +35,8 @@ function CartContextProvider ({ children }) {
     )
   }
 
-  const isInCart = (id) => {
-    return cartList.some((item) => item.id === id)
-  }
-
   return (
-    <CartContext.Provider
-      value={{ cartList, addItem, clear, removeItem, isInCart }}
-    >
+    <CartContext.Provider value={{ cartList, addItem, clear, removeItem }}>
       {children}
     </CartContext.Provider>
   )
