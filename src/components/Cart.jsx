@@ -138,7 +138,7 @@ function CartItem ({ item }) {
         <h6>{item.quantity}</h6>
       </div>
       <div className='px-2 text-center' style={{ width: '20%' }}>
-        <h6>$SUBTOTAL{item.price * item.quantity}</h6>
+        <h6>${item.price * item.quantity}</h6>
       </div>
     </div>
   )

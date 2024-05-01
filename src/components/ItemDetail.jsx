@@ -44,7 +44,7 @@ function ItemDetail ({ item }) {
             >
               <Card.Title>{item.title}</Card.Title>
               <Card.Text>{item.description}</Card.Text>
-              <Card.Title>{item.price}</Card.Title>
+              <Card.Title>${item.price}</Card.Title>
 
               {!cartValue ? <ItemCount onAdd={onAdd} /> : <Success />}
 

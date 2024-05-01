@@ -3,7 +3,7 @@
     "id": 1,
     "title": "Laptop Lenovo ThinkPad X1 Carbon",
     "description": "Potente laptop empresarial con procesador Intel Core i7, 16GB de RAM y SSD de 512GB",
-    "price": "$1499.99",
+    "price": 1499.99,
     "pictureUrl": "https://gist.github.com/assets/107598069/b332ffb7-acd4-4170-a158-3eceaaac9cdb",
     "category": "notebooks"
   },
@@ -11,7 +11,7 @@
     "id": 2,
     "title": "Smartphone Samsung Galaxy S21 Ultra",
     "description": "El último smartphone insignia de Samsung con cámara de 108MP, pantalla AMOLED de 6.8 pulgadas y 5G.",
-    "price": "$1199.99",
+    "price": 1199.99,
     "pictureUrl": "https://gist.github.com/assets/107598069/570cc00d-c17d-455c-a131-25f6513e0d34",
     "category": "telefonos"
   },
@@ -19,7 +19,7 @@
     "id": 3,
     "title": "MacBook Pro 2021",
     "description": "Portátil de alto rendimiento con chip M1, 16GB de RAM y SSD de 1TB",
-    "price": "$1999.99",
+    "price": 1999.99,
     "pictureUrl": "https://gist.github.com/assets/107598069/8a654475-b991-4a40-bbc0-c7b9dd18559a",
     "category": "notebooks"
   },
@@ -27,7 +27,7 @@
     "id": 4,
     "title": "Smartphone iPhone 13 Pro",
     "description": "El último iPhone con pantalla ProMotion, chip A15 Bionic y triple cámara de 12MP",
-    "price": "$1099.99",
+    "price": 1099.99,
     "pictureUrl": "https://gist.github.com/assets/107598069/c59de110-555f-4632-a6ce-747dee3a1a12",
     "category": "telefonos"
   }
