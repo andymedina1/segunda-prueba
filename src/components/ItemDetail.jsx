@@ -48,7 +48,7 @@ function ItemDetail ({ item }) {
 
               {!cartValue ? <ItemCount onAdd={onAdd} /> : <Success />}
 
-              <div className='mt-5 d-flex gap-5'>
+              <div className='mt-3 d-flex gap-5'>
                 <Button
                   variant='secondary'
                   style={{ height: '70px', width: 100 }}
@@ -56,14 +56,6 @@ function ItemDetail ({ item }) {
                 >
                   Volver
                 </Button>
-                <Link to='/cart'>
-                  <Button
-                    variant='secondary'
-                    style={{ height: '70px', width: 150 }}
-                  >
-                    Terminar mi compra
-                  </Button>
-                </Link>
               </div>
             </Card.Body>
           </div>
@@ -75,11 +67,18 @@ function ItemDetail ({ item }) {
 
 function Success () {
   return (
-    <Card bg='success' text='white' style={{ width: '18rem' }}>
-      <Card.Body>
-        <Card.Text>Producto agregado al carrito!</Card.Text>
-      </Card.Body>
-    </Card>
+    <div className='d-flex gap-2'>
+      <Card bg='success' text='white' style={{ width: '16rem' }}>
+        <Card.Body className='d-flex align-items-center justify-content-center'>
+          <Card.Text>Producto agregado al carrito!</Card.Text>
+        </Card.Body>
+      </Card>
+      <Link to='/cart'>
+        <Button variant='secondary' style={{ height: '70px', width: 150 }}>
+          Terminar mi compra
+        </Button>
+      </Link>
+    </div>
   )
 }
 
