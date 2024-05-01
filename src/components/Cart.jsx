@@ -1,18 +1,91 @@
 import { useContext } from 'react'
 import { CartContext } from '../contexts/CartContext'
+import { Button } from 'react-bootstrap'
 
 function Cart () {
   const { cartList } = useContext(CartContext)
   return (
-    <div className='mt-5 ms-5'>
-      <h1>Prueba carrito</h1>
-      <div className='mt-5'>
-        {cartList.map(item =>
-          <ul key={item.id}>
-            <h6>{item.title}</h6>
-            <li>Precio unitario: {item.price}</li>
-            <li>Cantidad: {item.quantity} unidades</li>
-          </ul>)}
+    <main className='d-flex'>
+      <section className='m-5' style={{ width: '60%' }}>
+        <h2>Shopping Cart</h2>
+        <hr />
+        <div className='d-flex justify-content-around align-items-center'>
+          <div className='px-2 text-center' style={{ width: '10%' }}>
+            Remove
+          </div>
+          <div className='px-2 text-center' style={{ width: '40%' }}>
+            Product
+          </div>
+          <div className='px-2 text-center' style={{ width: '15%' }}>
+            Price
+          </div>
+          <div className='px-2 text-center' style={{ width: '15%' }}>
+            Quantity
+          </div>
+          <div className='px-2 text-center' style={{ width: '20%' }}>
+            Subtotal
+          </div>
+        </div>
+        <hr />
+        <div>
+          {cartList.map((item) => (
+            <CartItem key={item.id} item={item} />
+          ))}
+        </div>
+      </section>
+      <aside className='m-5 px-3' style={{ width: '40%' }}>
+        <h2>Cart Totals</h2>
+        <hr />
+        <section className='d-flex justify-content-between'>
+          <span>SubTotal</span>
+          <span>$999</span>
+        </section>
+        <hr />
+        <section className='d-flex justify-content-between'>
+          <span>Shipping</span>
+        </section>
+        <hr />
+        <section className='d-flex justify-content-between'>
+          <span>Total</span>
+          <span>$999</span>
+        </section>
+        <hr />
+        <Button variant='secondary' size='lg' style={{ width: '100%' }}>Proceed to Checkout</Button>
+      </aside>
+    </main>
+  )
+}
+
+function CartItem ({ item }) {
+  return (
+    <div className='d-flex justify-content-between align-items-center my-3'>
+      <div className='px-2 text-center' style={{ width: '10%' }}>
+        <button className='btn btn-danger'>X</button>
+      </div>
+      <div className='d-flex px-2' style={{ width: '40%' }}>
+        {' '}
+        <div className='d-flex justify-content-center' style={{ width: '50%' }}>
+          <img
+            src={item.pictureUrl}
+            alt={item.title}
+            style={{ width: '100px', height: 'auto' }}
+          />
+        </div>
+        <div
+          style={{ width: '50%' }}
+          className='d-flex text-center align-items-center'
+        >
+          <h6>{item.title}</h6>
+        </div>
+      </div>
+      <div className='px-2 text-center' style={{ width: '15%' }}>
+        <h6>${item.price}</h6>
+      </div>
+      <div className='px-2 text-center' style={{ width: '15%' }}>
+        <h6>{item.quantity}</h6>
+      </div>
+      <div className='px-2 text-center' style={{ width: '20%' }}>
+        <h6>$SUBTOTAL{item.price * item.quantity}</h6>
       </div>
     </div>
   )
