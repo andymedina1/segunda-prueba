@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 function Cart () {
-  const { cartList } = useContext(CartContext)
+  const { cartList, totalCartPrice } = useContext(CartContext)
 
   if (cartList.length === 0) {
     return <EmptyCart />
@@ -44,7 +44,7 @@ function Cart () {
         <hr />
         <section className='d-flex justify-content-between'>
           <span>SubTotal</span>
-          <span>$999</span>
+          <span>${totalCartPrice()}</span>
         </section>
         <hr />
         <section className='d-flex justify-content-between'>
@@ -53,7 +53,7 @@ function Cart () {
         <hr />
         <section className='d-flex justify-content-between'>
           <span>Total</span>
-          <span>$999</span>
+          <span>${totalCartPrice()}</span>
         </section>
         <hr />
         <Button variant='secondary' size='lg' style={{ width: '100%' }}>
