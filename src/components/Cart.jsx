@@ -1,9 +1,15 @@
 import { useContext } from 'react'
 import { CartContext } from '../contexts/CartContext'
 import { Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 function Cart () {
   const { cartList } = useContext(CartContext)
+
+  if (cartList.length === 0) {
+    return <EmptyCart />
+  }
+
   return (
     <main className='d-flex'>
       <section className='m-5' style={{ width: '60%' }}>
@@ -53,6 +59,38 @@ function Cart () {
         <Button variant='secondary' size='lg' style={{ width: '100%' }}>Proceed to Checkout</Button>
       </aside>
     </main>
+  )
+}
+
+function EmptyCart () {
+  return (
+    <>
+      <main>
+        <section className='m-5'>
+          <h2>Shopping Cart</h2>
+          <hr />
+          <div style={{
+            margin: '1em 0',
+            textAlign: 'center'
+          }}
+          >
+            <img style={{ width: 250 }} src='https://gist.github.com/assets/107598069/039068a0-f582-40fe-82bd-3e1c9021d0cd' alt='Imágen carrito vacío' />
+            <p style={{
+              fontSize: '1.2em',
+              fontFamily: 'sans-serif',
+              fontWeight: '600'
+            }}
+            >Tu carrito está vacío
+            </p>
+          </div>
+          <div className='text-center'>
+            <Link to='/'>
+              <Button variant='secondary' size='lg'>Volver</Button>
+            </Link>
+          </div>
+        </section>
+      </main>
+    </>
   )
 }
 
