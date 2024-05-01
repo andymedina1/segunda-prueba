@@ -4,9 +4,7 @@ import { CartContext } from '../contexts/CartContext'
 import { Badge } from '@mui/material'
 
 function CartWidget () {
-  const { cartList } = useContext(CartContext)
-
-  const totalCartQuantity = () => cartList.reduce((acc, item) => acc + item.quantity, 0)
+  const { totalCartQuantity } = useContext(CartContext)
 
   return (
     <>

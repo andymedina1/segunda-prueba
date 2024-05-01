@@ -4,7 +4,8 @@ export const CartContext = createContext({
   cartList: [],
   addItem: () => {},
   clear: () => {},
-  removeItem: () => {}
+  removeItem: () => {},
+  totalCartQuantity: () => {}
 })
 
 function CartContextProvider ({ children }) {
@@ -35,8 +36,10 @@ function CartContextProvider ({ children }) {
     )
   }
 
+  const totalCartQuantity = () => cartList.reduce((acc, item) => acc + item.quantity, 0)
+
   return (
-    <CartContext.Provider value={{ cartList, addItem, clear, removeItem }}>
+    <CartContext.Provider value={{ cartList, addItem, clear, removeItem, totalCartQuantity }}>
       {children}
     </CartContext.Provider>
   )
