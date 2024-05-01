@@ -106,10 +106,14 @@ function EmptyCart () {
 }
 
 function CartItem ({ item }) {
+  const { removeItem } = useContext(CartContext)
+
   return (
     <div className='d-flex justify-content-between align-items-center my-3'>
       <div className='px-2 text-center' style={{ width: '10%' }}>
-        <button className='btn btn-danger'>X</button>
+        <Button variant='danger' onClick={() => removeItem(item.id)}>
+          X
+        </Button>
       </div>
       <div className='d-flex px-2' style={{ width: '40%' }}>
         {' '}
