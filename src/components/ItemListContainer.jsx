@@ -3,15 +3,14 @@ import { useParams } from 'react-router-dom'
 
 import ItemList from './ItemList'
 
-import { app } from '../App'
-import { collection, getDocs, getFirestore } from 'firebase/firestore'
+import db from '../services/firebase'
+import { collection, getDocs } from 'firebase/firestore'
 
 function ItemListContainer () {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
   const { category } = useParams()
 
-  const db = getFirestore(app)
   const refCollection = collection(db, 'items')
 
   useEffect(() => {
