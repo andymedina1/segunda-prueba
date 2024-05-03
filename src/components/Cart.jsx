@@ -56,9 +56,11 @@ function Cart () {
           <span>${totalCartPrice()}</span>
         </section>
         <hr />
-        <Button variant='secondary' size='lg' style={{ width: '100%' }}>
-          Proceed to Checkout
-        </Button>
+        <Link to='/checkout'>
+          <Button variant='secondary' size='lg' style={{ width: '100%' }}>
+            Proceed to Checkout
+          </Button>
+        </Link>
       </aside>
     </main>
   )
