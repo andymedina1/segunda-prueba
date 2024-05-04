@@ -1,25 +1,25 @@
 import { useState } from 'react'
+
 import Button from 'react-bootstrap/Button'
 
-function ItemCount () {
-  const [cantidad, setCantidad] = useState(1)
+function ItemCount ({ onAdd }) {
+  const [quantity, setQuantity] = useState(1)
 
   const handleIncrement = () => {
-    setCantidad((prevCantidad) => prevCantidad + 1)
+    setQuantity((prevQuantity) => prevQuantity + 1)
   }
 
   const handleDecrement = () => {
-    if (cantidad > 1) {
-      setCantidad((prevCantidad) => prevCantidad - 1)
+    if (quantity > 1) {
+      setQuantity((prevQuantity) => prevQuantity - 1)
     }
   }
 
-  const handleReset = () => {
-    setCantidad(1)
-  }
-
   return (
-    <div className='d-flex justify-content-around align-items-center'>
+    <div
+      style={{ width: '100%' }}
+      className='d-flex justify-content-around align-items-center'
+    >
       <div
         className='d-flex flex-column align-items-center gap-2'
         style={{ width: '25%' }}
@@ -39,10 +39,10 @@ function ItemCount () {
           -
         </Button>
       </div>
-      <h4>{cantidad}</h4>
+      <h4>{quantity}</h4>
       <Button
         variant='secondary'
-        onClick={handleReset}
+        onClick={() => onAdd(quantity)}
         style={{ height: '70px', width: 100 }}
       >
         Agregar al carrito

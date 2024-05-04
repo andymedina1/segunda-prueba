@@ -3,7 +3,7 @@ a {
   text-decoration: none;
 }
 
-span {
+.widget-badge {
   color: #FFF;
   position: relative;
   bottom: 15px;

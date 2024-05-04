@@ -1,29 +1,30 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-import data from '../data/products.json'
 import ItemDetail from './ItemDetail'
 
+import db from '../services/firebase'
+import { doc, getDoc } from 'firebase/firestore'
+
 function ItemDetailContainer () {
-  const [product, setProduct] = useState(null)
+  const [item, setItem] = useState(null)
 
   const { id } = useParams()
 
-  useEffect(() => {
-    const promesa = new Promise((resolve) => {
-      setTimeout(() => resolve(data), 2000)
-    })
+  const refDoc = doc(db, 'items', id)
 
-    promesa.then((data) => {
-      setProduct(data.find((product) => product.id === Number(id)))
+  useEffect(() => {
+    getDoc(refDoc).then((snapshot) => {
+      const newItem = { id: snapshot.id, ...snapshot.data() }
+      setItem(newItem)
     })
   }, [id])
 
   return (
     <>
-      {product === null
+      {item === null
         ? <h1 className='text-center m-5'>Loading...</h1>
-        : <ItemDetail {...product} />}
+        : <ItemDetail item={item} />}
     </>
   )
 }

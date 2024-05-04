@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-import data from '../data/products.json'
 import ItemList from './ItemList'
+
+import db from '../services/firebase'
+import { collection, getDocs, query, where } from 'firebase/firestore'
 
 function ItemListContainer () {
   const [products, setProducts] = useState([])
@@ -10,21 +12,29 @@ function ItemListContainer () {
   const { category } = useParams()
 
   useEffect(() => {
-    const promesa = new Promise((resolve) => {
-      setLoading(true)
-      setTimeout(() => resolve(data), 2000)
-    })
+    setLoading(true)
 
-    promesa.then((data) => {
-      if (!category) {
+    let q
+    if (!category) {
+      q = query(collection(db, 'items'))
+    } else {
+      q = query(collection(db, 'items'), where('category', '==', category))
+    }
+
+    getDocs(q)
+      .then((snapshot) => {
+        const data = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data()
+        }))
+        return data
+      })
+      .then((data) => {
         setProducts(data)
+      })
+      .finally(() => {
         setLoading(false)
-      } else {
-        const productosFiltrados = data.filter((prod) => prod.category === category)
-        setProducts(productosFiltrados)
-        setLoading(false)
-      }
-    })
+      })
   }, [category])
 
   return (
