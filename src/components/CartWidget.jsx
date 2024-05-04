@@ -10,7 +10,6 @@ function CartWidget () {
     <>
       <Link
         to='/cart'
-        style={{ visibility: totalCartQuantity() > 0 ? 'visible' : 'hidden' }}
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'
