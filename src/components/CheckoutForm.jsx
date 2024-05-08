@@ -1,10 +1,12 @@
 import { useState } from 'react'
-import { Button, Container, Form } from 'react-bootstrap'
+import { Button, Container, Form, Tooltip, OverlayTrigger } from 'react-bootstrap'
 
 function CheckoutForm ({ onSubmit }) {
   const [name, setName] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const [email, setEmail] = useState('')
+  const [confirmEmail, setConfirmEmail] = useState('')
+  const [error, setError] = useState(false)
 
   const handlePhoneChange = (event) => {
     const value = event.target.value
@@ -22,7 +24,19 @@ function CheckoutForm ({ onSubmit }) {
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value)
+    if (confirmEmail) {
+      setError(event.target.value !== confirmEmail)
+    }
   }
+
+  const handleConfirmEmailChange = (event) => {
+    setConfirmEmail(event.target.value)
+    if (email) {
+      setError(event.target.value !== email)
+    }
+  }
+
+  const formIsValid = name && phoneNumber && email && confirmEmail && (email === confirmEmail)
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -33,7 +47,7 @@ function CheckoutForm ({ onSubmit }) {
     <Container>
       <Form onSubmit={handleSubmit}>
         <Form.Group className='mb-3' controlId='formName'>
-          <Form.Label>Nombre</Form.Label>
+          <Form.Label>Nombre y apellido</Form.Label>
           <Form.Control
             type='text'
             placeholder='Juan Pérez'
@@ -65,8 +79,30 @@ function CheckoutForm ({ onSubmit }) {
           />
         </Form.Group>
 
-        <Button variant='secondary' type='submit'>
-          Crear Orden
+        <Form.Group className='mb-3' controlId='formConfirmEmail'>
+          <Form.Label>Confirmar Email</Form.Label>
+          <OverlayTrigger
+            placement='top'
+            show={error}
+            overlay={
+              <Tooltip id='button-tooltip'>
+                Los emails no coinciden.
+              </Tooltip>
+            }
+          >
+            <Form.Control
+              type='email'
+              placeholder='juanc@mail.com'
+              value={confirmEmail}
+              onChange={handleConfirmEmailChange}
+              isInvalid={error}
+              required
+            />
+          </OverlayTrigger>
+        </Form.Group>
+
+        <Button variant='secondary' type='submit' disabled={!formIsValid}>
+          Realizar compra
         </Button>
       </Form>
     </Container>
