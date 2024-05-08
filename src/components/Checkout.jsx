@@ -7,6 +7,7 @@ import { CartContext } from '../contexts/CartContext'
 import db from '../services/firebase'
 import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
+import EmptyCart from './EmptyCart'
 
 function Checkout () {
   const [buyer, setBuyer] = useState(null)
@@ -46,6 +47,10 @@ function Checkout () {
         })
     }
   }, [buyer])
+
+  if (cartList.length === 0) {
+    return <EmptyCart />
+  }
 
   if (orderId) {
     return (
