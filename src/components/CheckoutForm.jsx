@@ -23,17 +23,17 @@ function CheckoutForm ({ onSubmit }) {
   }
 
   const handleEmailChange = (event) => {
-    setEmail(event.target.value)
+    const { value } = event.target
+    setEmail(value)
     if (confirmEmail) {
-      setError(event.target.value !== confirmEmail)
+      setError(value.substring(0, confirmEmail.length) !== confirmEmail)
     }
   }
 
   const handleConfirmEmailChange = (event) => {
-    setConfirmEmail(event.target.value)
-    if (email) {
-      setError(event.target.value !== email)
-    }
+    const { value } = event.target
+    setConfirmEmail(value)
+    setError(value !== email.substring(0, value.length))
   }
 
   const formIsValid = name && phoneNumber && email && confirmEmail && (email === confirmEmail)
