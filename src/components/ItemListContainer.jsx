@@ -9,16 +9,16 @@ import { collection, getDocs, query, where } from 'firebase/firestore'
 function ItemListContainer () {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
-  const { category } = useParams()
+  const { categoryId } = useParams()
 
   useEffect(() => {
     setLoading(true)
 
     let q
-    if (!category) {
+    if (!categoryId) {
       q = query(collection(db, 'items'))
     } else {
-      q = query(collection(db, 'items'), where('category', '==', category))
+      q = query(collection(db, 'items'), where('categoryId', '==', categoryId))
     }
 
     getDocs(q)
@@ -35,7 +35,7 @@ function ItemListContainer () {
       .finally(() => {
         setLoading(false)
       })
-  }, [category])
+  }, [categoryId])
 
   return (
     <>
