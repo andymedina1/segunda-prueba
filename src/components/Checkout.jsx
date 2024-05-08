@@ -48,10 +48,6 @@ function Checkout () {
     }
   }, [buyer])
 
-  if (cartList.length === 0) {
-    return <EmptyCart />
-  }
-
   if (orderId) {
     return (
       <>
@@ -59,6 +55,10 @@ function Checkout () {
         <OrderConfirmation orderId={orderId} />
       </>
     )
+  }
+
+  if (cartList.length === 0) {
+    return <EmptyCart />
   }
 
   return (
