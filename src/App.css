@@ -9,10 +9,3 @@ a {
   bottom: 15px;
   right: 3px;
 }
-
-.navbar_link-container {
-  color: white;
-  margin-left: -8%;
-  display: flex;
-  gap: 20px;
-}
