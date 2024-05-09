@@ -14,20 +14,20 @@ function Cart () {
   return (
     <main className='d-flex'>
       <section className='m-5' style={{ width: '60%' }}>
-        <h2>Shopping Cart</h2>
+        <h2>Carrito de Compras</h2>
         <hr />
         <div className='d-flex justify-content-around align-items-center'>
           <div className='px-2 text-center' style={{ width: '10%' }}>
-            Remove
+            Eliminar
           </div>
           <div className='px-2 text-center' style={{ width: '40%' }}>
-            Product
+            Productos
           </div>
           <div className='px-2 text-center' style={{ width: '15%' }}>
-            Price
+            Precio
           </div>
           <div className='px-2 text-center' style={{ width: '15%' }}>
-            Quantity
+            Cantidad
           </div>
           <div className='px-2 text-center' style={{ width: '20%' }}>
             Subtotal
@@ -41,7 +41,7 @@ function Cart () {
         </div>
       </section>
       <aside className='m-5 px-3' style={{ width: '40%' }}>
-        <h2>Cart Totals</h2>
+        <h2>Resumen del Carrito</h2>
         <hr />
         <section className='d-flex justify-content-between'>
           <span>SubTotal</span>
@@ -49,7 +49,8 @@ function Cart () {
         </section>
         <hr />
         <section className='d-flex justify-content-between'>
-          <span>Shipping</span>
+          <span>Envío</span>
+          <span>¡Envío gratis!</span>
         </section>
         <hr />
         <section className='d-flex justify-content-between'>
@@ -59,7 +60,7 @@ function Cart () {
         <hr />
         <Link to='/checkout'>
           <Button variant='secondary' size='lg' style={{ width: '100%' }}>
-            Proceed to Checkout
+            Finalizar Compra
           </Button>
         </Link>
       </aside>
