@@ -39,6 +39,12 @@ function NavBar () {
             >
               <h5>Teléfonos</h5>
             </NavLink>
+            <NavLink
+              to='/category/accesorios'
+              style={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}
+            >
+              <h5>Accesorios</h5>
+            </NavLink>
           </div>
 
           <CartWidget />
