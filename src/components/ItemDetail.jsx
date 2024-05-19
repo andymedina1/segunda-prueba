@@ -46,7 +46,7 @@ function ItemDetail ({ item }) {
               <Card.Text>{item.description}</Card.Text>
               <Card.Title>${item.price}</Card.Title>
 
-              {!cartValue ? <ItemCount onAdd={onAdd} /> : <Success />}
+              {!cartValue ? <ItemCount onAdd={onAdd} stock={item.stock} /> : <Success />}
 
               <div className='mt-3 d-flex gap-5'>
                 <Button
